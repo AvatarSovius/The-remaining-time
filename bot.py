@@ -39,6 +39,11 @@ def get_sum_life(bot, update):
         update.message.reply_text(
             'Тебе осталось жить {} часов.\nЗадумайся, тем ли ты занимаешься в жизни. Жизнь скоротечна'.format(score))
 
+    life_time = 569400
+    your_time = (int(text[1]) * 365) * 24
+    suming = life_time - your_time
+    update.message.reply_text(suming)
+
 
 def main():
     mybot = Updater(settings.TELEGRAM_TOKEN)
