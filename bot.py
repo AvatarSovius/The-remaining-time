@@ -8,7 +8,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     )
 
 logging.info('''==========================!''')
-logging.info('Бот запущен!')
+
 
 
 def start_message(bot, update):
