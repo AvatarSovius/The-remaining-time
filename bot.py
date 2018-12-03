@@ -27,9 +27,7 @@ def talk_to_me(bot, update):
 def get_sum_life(bot,update):
     text = update.message.text.split(' ')
     life_time = 569400
-    print(text)
     your_time = (int(text[1]) * 365) * 24
-    print(your_time)
     suming = life_time - your_time
     update.message.reply_text(suming)
 
