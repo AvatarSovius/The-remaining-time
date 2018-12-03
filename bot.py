@@ -10,6 +10,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
 logging.info('''==========================!''')
 logging.info('Бот запущен!')
 
+
 def start_message(bot, update):
     text = 'Добрый день, вы знаете что жизнь скоротечна? И откладывая все на завтра, вы  теряете частичку себя.'
     logging.info('Вызван /start')
@@ -24,15 +25,19 @@ def talk_to_me(bot, update):
     update.message.reply_text(user_text)
 
 
-def get_sum_life(bot,update):
+def get_sum_life(bot, update):
     text = update.message.text.split(' ')
-    life_time = 569400
-    print(text)
-    your_time = (int(text[1]) * 365) * 24
-    print(your_time)
-    suming = life_time - your_time
-    update.message.reply_text(suming)
+    man = 582540
+    lady = 657000
 
+    if text[1].lower() == 'м':
+        score = man - ((int(text[2]) * 365) * 24)
+        update.message.reply_text(
+            'Тебе осталось жить {} часов.\nЗадумайся, тем ли ты занимаешься в жизни. Жизнь скоротечна'.format(score))
+    else:
+        score = lady - ((int(text[2]) * 365) * 24)
+        update.message.reply_text(
+            'Тебе осталось жить {} часов.\nЗадумайся, тем ли ты занимаешься в жизни. Жизнь скоротечна'.format(score))
 
 
 def main():
