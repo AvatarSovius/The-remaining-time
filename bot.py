@@ -7,8 +7,7 @@ logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     filename='bot.log'
                     )
 
-logging.info('''==========================!''')
-
+logging.info('''==========================''')
 
 
 def start_message(bot, update):
@@ -32,17 +31,14 @@ def get_sum_life(bot, update):
 
     if text[1].lower() == 'м':
         score = man - ((int(text[2]) * 365) * 24)
+        score_days = (lady /24) - int(text[2]) * 365
         update.message.reply_text(
-            'Тебе осталось жить {} часов.\nЗадумайся, тем ли ты занимаешься в жизни. Жизнь скоротечна'.format(score))
+            'Тебе осталось жить: {} часов.\nДней: {} '.format(score,score_days))
     else:
         score = lady - ((int(text[2]) * 365) * 24)
+        score_days = (lady / 24) - int(text[2]) * 365
         update.message.reply_text(
-            'Тебе осталось жить {} часов.\nЗадумайся, тем ли ты занимаешься в жизни. Жизнь скоротечна'.format(score))
-
-    life_time = 569400
-    your_time = (int(text[1]) * 365) * 24
-    suming = life_time - your_time
-    update.message.reply_text(suming)
+             'Тебе осталось жить: {} часов.\nДней: {} '.format(score,score_days))
 
 
 def main():
