@@ -1,6 +1,8 @@
-import settings
 import logging
+
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+
+import settings
 
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s',
                     level=logging.INFO,
@@ -11,9 +13,15 @@ logging.info('''==========================''')
 
 
 def start_message(bot, update):
-    text = 'Добрый день, вы знаете что жизнь скоротечна? И откладывая все на завтра, вы  теряете частичку себя.'
+    text = 'Есть одно важное условие радостной жизни — всегда помнить, что она закончится'
+    text_2 = '''
+    Не ждите, когда закончите институт, когда родятся дети. Хватит ждать, когда начнете работать, когда уйдете на пенсию, когда женитесь, разведетесь. Не ждите вечера пятницы, утра воскресенья, покупки новой машины, новой квартиры. Не ждите весны, лета, осени, зимы. Минуты счастья — драгоценны, это не конечный пункт путешествия, а само путешествие. Работайте — не только ради денег, любите — не в ожидании расставаний. Танцуйте — не обращая внимания на взгляды. Самая ужасная ошибка, которую вы можете совершить — это всю жизнь гнаться за целями, не замечая как мимо вас пробегает ваша жизнь…
+    '''
+    text_3 = 'Хочешь узнать, сколько тебе осталось жить на этой планете в часах, днях, минутах?\nВводи комманду /life пол возраст\nПример: /life М 30'
     logging.info('Вызван /start')
     update.message.reply_text(text)
+    update.message.reply_text(text_2)
+    update.message.reply_text(text_3)
 
 
 def talk_to_me(bot, update):
@@ -31,14 +39,14 @@ def get_sum_life(bot, update):
 
     if text[1].lower() == 'м':
         score = man - ((int(text[2]) * 365) * 24)
-        score_days = (lady /24) - int(text[2]) * 365
+        score_days = (lady / 24) - int(text[2]) * 365
         update.message.reply_text(
-            'Тебе осталось жить: {} часов.\nДней: {} '.format(score,score_days))
+            'Тебе осталось жить: {} часов.\nДней: {}\nТы  '.format(score, score_days))
     else:
         score = lady - ((int(text[2]) * 365) * 24)
         score_days = (lady / 24) - int(text[2]) * 365
         update.message.reply_text(
-             'Тебе осталось жить: {} часов.\nДней: {} '.format(score,score_days))
+            'Тебе осталось жить: {} часов.\nДней: {} '.format(score, score_days))
 
 
 def main():
